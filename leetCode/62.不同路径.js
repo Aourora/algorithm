@@ -22,7 +22,6 @@ var uniquePaths = function (m, n) {
             } else if (j > 0) {
                 f[i][j] = f[i][j - 1];
             }
-
         }
     }
     return f[m - 1][n - 1];

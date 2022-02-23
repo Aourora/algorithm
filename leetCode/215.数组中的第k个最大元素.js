@@ -31,10 +31,9 @@ var findKthLargest = function (nums, k) {
         } else {
             return logic(i + 1, end);
         }
-    }
+    };
     return logic(0, nums.length - 1);
 };
-
 
 /**
  * @param {number[][]} grid
@@ -77,4 +76,3 @@ var gridGame = function (grid) {
     return result;
 };
 // @lc code=end
-
