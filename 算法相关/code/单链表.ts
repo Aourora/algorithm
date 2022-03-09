@@ -6,18 +6,13 @@ interface Node<T> {
 }
 
 export default class SinglyLinkedList<T> {
-    constructor() {
-        Object.defineProperty(this, 'length', {
-            get: () => {
-                return this.size;
-            },
-        });
-    }
     private head!: Node<T> | null;
 
     private size: number = 0;
 
-    public readonly length!: number;
+    public get length(): number {
+        return this.size;
+    }
 
     /**
      * 查找元素是否在链表中
