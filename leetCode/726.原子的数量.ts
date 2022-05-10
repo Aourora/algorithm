@@ -12,7 +12,7 @@ function countOfAtoms(formula: string): string {
     let currentName = '';
     let currentCount = '';
 
-    const add = (key: string, count: number) => {
+    const add = (key: string, count: number): void => {
         result[key] = count + (result[key] || 0);
     };
     for (let i = formula.length - 1; i >= 0; --i) {

@@ -4,6 +4,8 @@
  * [19] 删除链表的倒数第 N 个结点
  */
 
+import { ListNode } from './common';
+
 // Definition for singly-linked list.
 
 function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {

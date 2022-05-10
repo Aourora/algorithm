@@ -4,6 +4,8 @@
  * [2] 两数相加
  */
 
+import { ListNode } from './common';
+
 // @lc code=start
 
 // Definition for singly-linked list.

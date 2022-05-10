@@ -49,7 +49,7 @@ class NestedIterator {
     private index: number;
     constructor(nestedList: any[]) {
         this.list = [];
-        const logic = (source: any[]) => {
+        const logic = (source: any[]): void => {
             for (const item of source) {
                 if (item.isInteger()) {
                     this.list.push(item.getInteger() as number);
