@@ -2,7 +2,7 @@
 class ArrayStack<T> {
     private stack: T[];
     constructor() {
-        this.stack = new Array();
+        this.stack = [];
     }
     push(item: T) {
         this.stack.push(item);

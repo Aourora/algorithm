@@ -51,3 +51,7 @@ Thumbs.db
 #//////////////////////////
 
 .vscode/
+
+/coverage/
+
+/.nyc_output/
