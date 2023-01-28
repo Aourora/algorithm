@@ -50,6 +50,14 @@ function getPathNum(n, arr) {
 const Base64KeyChars =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
+const AsciiTo64 = new Array(128);
+for (let i = 0; i < 128; ++i) {
+    AsciiTo64[i] = 0;
+}
+for (let i = 0; i < 64; ++i) {
+    AsciiTo64[Base64KeyChars.charCodeAt(i)] = i;
+}
+
 function compressUUID(uuid) {
     uuid = uuid.replace(/-/g, '');
     let r = 5;
@@ -70,7 +78,38 @@ function compressUUID(uuid) {
     return t + o.join('');
 }
 
-console.log(compressUUID('9334b25e-1df3-4634-a746-d5254bb3d6c6'));
+function decompressUUID(i) {
+    if (23 === i.length) {
+        let e = [];
+        for (let r = 5; r < 23; r += 2) {
+            let s = AsciiTo64[i.charCodeAt(r)],
+                t = AsciiTo64[i.charCodeAt(r + 1)];
+            e.push((s >> 2).toString(16));
+            e.push((((3 & s) << 2) | (t >> 4)).toString(16));
+            e.push((15 & t).toString(16));
+        }
+        i = i.slice(0, 5) + e.join('');
+    } else if (22 === i.length) {
+        let e = [];
+        for (let r = 2; r < 22; r += 2) {
+            let s = AsciiTo64[i.charCodeAt(r)],
+                t = AsciiTo64[i.charCodeAt(r + 1)];
+            e.push((s >> 2).toString(16));
+            e.push((((3 & s) << 2) | (t >> 4)).toString(16));
+            e.push((15 & t).toString(16));
+        }
+        i = i.slice(0, 2) + e.join('');
+    }
+    return [
+        i.slice(0, 8),
+        i.slice(8, 12),
+        i.slice(12, 16),
+        i.slice(16, 20),
+        i.slice(20),
+    ].join('-');
+}
+
+console.log(decompressUUID('2f0ebtF+NxF+ZeJEhUF7m99'));
 
 /**
  * @param {number[]} nums

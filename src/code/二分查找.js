@@ -100,7 +100,7 @@ function bsearchLastLessThan(arr, value) {
     }
     return -1;
 }
-console.log(bsearchLastLessThan([1, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 7, 8, 9], 7));
+console.log(bsearchLastLessThan([1, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 7, 8, 9], 2));
 
 /**
  * initialize your data structure here.
