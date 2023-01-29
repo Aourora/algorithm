@@ -21,4 +21,4 @@ function computeMaxCallStackSize(): number {
     }
 }
 
-//console.log(computeMaxCallStackSize())
+// console.log(computeMaxCallStackSize());
