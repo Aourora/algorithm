@@ -14,10 +14,11 @@
 
 const solution = function (isBadVersion: any) {
     return function (n: number): number {
-        let left = 1,
-            right = n;
-        while (right > left) {
-            const mid = left + (((right - left) / 2) | 0);
+        let left = 1;
+        let right = n;
+
+        while (left < right) {
+            const mid = (left + (right - left) / 2) | 0;
             if (isBadVersion(mid)) {
                 right = mid;
             } else {
