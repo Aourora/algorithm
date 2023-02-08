@@ -20,13 +20,13 @@ import { ListNode } from './common';
  */
 
 function middleNode(head: ListNode | null): ListNode | null {
-    let i = head,
-        j = head;
-    let length = 0;
-    while (i) {
-        i = i.next;
-        if (++length % 2 === 0) j = j.next;
+    let fast = head;
+    let slow = head;
+    let i = 0;
+    while (fast) {
+        fast = fast.next;
+        if (++i % 2 === 0) slow = slow.next;
     }
-    return j;
+    return slow;
 }
 // @lc code=end
