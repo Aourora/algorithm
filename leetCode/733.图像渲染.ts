@@ -13,22 +13,24 @@ function floodFill(
 ): number[][] {
     const { length: m } = image;
     const { length: n } = image[0];
-    const initColor = image[sr][sc];
-    const bfs = (i: number, j: number): void => {
+    const preColor = image[sr][sc];
+
+    const bfs = (r: number, c: number): void => {
         if (
-            i < 0 ||
-            j < 0 ||
-            i >= m ||
-            j >= n ||
-            image[i][j] === color ||
-            image[i][j] !== initColor
-        )
+            r < 0 ||
+            c < 0 ||
+            r >= m ||
+            c >= n ||
+            image[r][c] !== preColor ||
+            image[r][c] === color
+        ) {
             return;
-        image[i][j] = color;
-        bfs(i + 1, j);
-        bfs(i - 1, j);
-        bfs(i, j + 1);
-        bfs(i, j - 1);
+        }
+        image[r][c] = color;
+        bfs(r + 1, c);
+        bfs(r - 1, c);
+        bfs(r, c + 1);
+        bfs(r, c - 1);
     };
     bfs(sr, sc);
     return image;
