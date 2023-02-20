@@ -3,7 +3,7 @@
  *
  * [116] 填充每个节点的下一个右侧节点指针
  */
-
+import { Node } from './common';
 // @lc code=start
 /**
  * Definition for Node.
@@ -21,8 +21,6 @@
  * }
  */
 
-import { Node } from './common';
-
 // function connect(root: Node | null): Node | null {
 //     const dfs = (node: Node | null, next: Node | null): void => {
 //         if (!node) return;
@@ -39,10 +37,10 @@ import { Node } from './common';
 function connect(root: Node | null): Node | null {
     let node = root;
     while (node && node.left) {
-        let next: Node | null = node;
+        let next = node;
         while (next) {
-            next.left!.next = next.right;
-            next.right!.next = next.next ? next.next.left : null;
+            next.left.next = next.right;
+            next.right.next = next.next ? next.next.left : null;
             next = next.next;
         }
         node = node.left;
