@@ -4,10 +4,10 @@ class ArrayStack<T> {
     constructor() {
         this.stack = [];
     }
-    push(item: T) {
+    push(item: T): void {
         this.stack.push(item);
     }
-    pop() {
+    pop(): T {
         return this.stack.length > 0 ? this.stack.pop() : null;
     }
 }
