@@ -21,16 +21,36 @@
  * }
  */
 
-import { Node } from './common';
+// import { Node } from './common';
 
 function connect(root: Node | null): Node | null {
     let node = root;
-    while (node && (node.left || node.right)) {
+    while (node) {
         let next = node;
+        let nextStart: Node, last: Node;
+        const temp = node.left || node.right;
         while (next) {
-
+            if (next.left) {
+                if (last) {
+                    last.next = next.left;
+                }
+                if (!nextStart) {
+                    nextStart = next.left;
+                }
+                last = next.left;
+            }
+            if (next.right) {
+                if (last) {
+                    last.next = next.right;
+                }
+                if (!nextStart) {
+                    nextStart = next.right;
+                }
+                last = next.right;
+            }
+            next = next.next;
         }
-        node = node.left || node.right;
+        node = nextStart;
     }
     return root;
 }

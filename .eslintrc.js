@@ -39,5 +39,6 @@ module.exports = {
         'no-console': 'off',
         '@typescript-eslint/indent': ['off', 4, { SwitchCase: 1 }],
         'no-prototype-builtins': 'off',
+        'no-constant-condition': 'off',
     },
 };
